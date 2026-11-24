@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b2530" />
+    <meta name="description" content="Credencial deportiva digital con codigo QR para acceso al gimnasio universitario." />
+    <title>Mi Pase Deportivo</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body class="student-body">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="student-nav">
+      <a class="brand" href="/" aria-label="Inicio de UniSport">
+        <span class="brand-mark" aria-hidden="true">U</span>
+        <span><strong>UniSport</strong><small>Campus activo</small></span>
+      </a>
+      <a class="text-link" href="/admin">Panel administrativo</a>
+    </header>
+
+    <main id="contenido" class="student-shell">
+      <section class="student-intro" aria-labelledby="titulo-principal">
+        <p class="eyebrow">Credencial deportiva digital</p>
+        <h1 id="titulo-principal">Tu acceso al gimnasio, en un solo pase.</h1>
+        <p>Selecciona tu matricula y presenta el codigo al personal de acceso. El pase se renueva automaticamente cada 30 segundos.</p>
+
+        <label class="field-label" for="matriculaSelect">Cuenta de alumno</label>
+        <div class="select-wrap">
+          <select id="matriculaSelect" aria-describedby="selectorAyuda">
+            <option value="">Cargando alumnos...</option>
+          </select>
+        </div>
+        <small id="selectorAyuda" class="field-help">Demo academica: no se solicitan contrasenas ni datos sensibles.</small>
+      </section>
+
+      <section class="digital-pass" aria-live="polite" aria-busy="true">
+        <div class="pass-topline">
+          <span class="pass-label">Pase universitario</span>
+          <span id="estadoBadge" class="status-pill status-neutral"><span></span> Sin sesion</span>
+        </div>
+
+        <div class="identity-block">
+          <div id="avatar" class="avatar" aria-hidden="true">--</div>
+          <div>
+            <p id="nombreAlumno" class="student-name">Selecciona una cuenta</p>
+            <p id="carreraAlumno" class="student-degree">—</p>
+            <p id="matriculaAlumno" class="student-id">Matricula —</p>
+          </div>
+        </div>
+
+        <div class="pass-grid">
+          <div class="qr-panel">
+            <div class="qr-frame">
+              <canvas id="qrCanvas" width="220" height="220" aria-label="Codigo QR de acceso"></canvas>
+              <div id="qrPlaceholder" class="qr-placeholder">QR</div>
+            </div>
+            <p>Actualiza en <strong id="qrCountdown">30 s</strong></p>
+          </div>
+
+          <div class="progress-panel">
+            <p class="micro-label">Avance del periodo</p>
+            <p class="credit-count"><strong id="creditosActuales">0</strong><span> / <span id="creditosMeta">5</span> creditos</span></p>
+            <div class="progress-track" role="progressbar" aria-label="Progreso de creditos" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0">
+              <span id="progressFill"></span>
+            </div>
+            <p id="mensajeProgreso" class="progress-copy">Completa sesiones de al menos 60 minutos.</p>
+
+            <div class="access-state">
+              <span class="access-icon" aria-hidden="true">⌁</span>
+              <div>
+                <small>Estado actual</small>
+                <strong id="estadoTexto">Fuera del gimnasio</strong>
+                <span id="horaEntrada">Sin entrada activa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pass-footer">
+          <span>Valido para el periodo actual</span>
+          <button id="refreshButton" class="icon-button" type="button" aria-label="Actualizar informacion">↻</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <script type="module" src="/js/alumno.js"></script>
+  </body>
+</html>
+
