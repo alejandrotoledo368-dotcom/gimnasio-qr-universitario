@@ -1,0 +1,23 @@
+{
+  "name": "control-gimnasio-qr",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Control universitario de acceso al gimnasio y validacion de creditos mediante QR.",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "test": "node --test",
+    "check": "npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "html5-qrcode": "2.3.8",
+    "qrcode": "1.5.4"
+  },
+  "devDependencies": {
+    "vercel": "^66.6.0"
+  }
+}
+
