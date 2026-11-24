@@ -8,7 +8,7 @@
 | Materia | Programacion de Sistemas |
 | Integrante 1 | Allan — `22011704@udec.edu.mx` |
 | Integrante 2 | Miled El Salibe — `miledelsalibe.com@gmail.com` |
-| Integrante 3 | ALEJANDRO — `alejandrotoledo368@gmail.com` |
+| Integrante 3 | alejandrotoledo368-dotcom — `alejandrotoledo368@gmail.com` |
 | Entregable | Aplicacion web, ejecutable Windows, pruebas y despliegue Vercel |
 
 > Las contrasenas no forman parte del codigo ni del historial. GitHub debe utilizarse con inicio de sesion, tokens o llaves SSH personales.
@@ -107,7 +107,7 @@ Preguntas probables:
 - **¿El QR otorga el credito?** No. Solo identifica al alumno; el servidor decide el credito.
 - **¿Como se actualiza la tarjeta?** Consulta nuevamente `/api/alumnos` y vuelve a renderizar los datos.
 
-## ALEJANDRO — Panel, sensor, ejecutable y calidad
+## alejandrotoledo368-dotcom — Panel, sensor, ejecutable y calidad
 
 ### Rama y commits
 
@@ -142,7 +142,7 @@ Rama: `feature/admin-pruebas`
 | `Iniciar_Gimnasio_QR.bat` | Respaldo de arranque. |
 | `README.md` | Instalacion, API, despliegue y evidencia Git. |
 
-### Guion para que ALEJANDRO explique su parte
+### Guion para que alejandrotoledo368-dotcom explique su parte
 
 > Mi parte integra el sensor fisico con el sistema. El panel usa html5-qrcode para solicitar acceso a la camara CMOS y procesar los fotogramas localmente; las imagenes no se almacenan. Cuando obtiene una matricula consulta el estado: si el alumno esta fuera solicita un check-in y si esta dentro solicita un checkout. Tambien agregue una entrada manual de respaldo y la simulacion de 65 minutos. Para facilitar la demostracion compile un ejecutable autocontenido que levanta el servidor, comprueba el puerto y abre las dos vistas. Finalmente automatice las pruebas y organice las contribuciones mediante tres Pull Requests.
 
@@ -163,5 +163,5 @@ git shortlog -sne --all
 git log --graph --pretty=format:"%h | %an <%ae> | %s" --all
 ```
 
-La aplicacion final combina las tres aportaciones: Miled produce el pase, ALEJANDRO lo captura y presenta la operacion, y Allan valida y almacena el resultado en el servidor.
+La aplicacion final combina las tres aportaciones: Miled produce el pase, alejandrotoledo368-dotcom lo captura y presenta la operacion, y Allan valida y almacena el resultado en el servidor.
 

@@ -163,7 +163,7 @@ Cada rama contiene por lo menos dos commits significativos y se integra a `main`
 |---|---|
 | `Allan <22011704@udec.edu.mx>` | Funciones serverless, persistencia, check-in, checkout y regla de 60 minutos. |
 | `Miled El Salibe <miledelsalibe.com@gmail.com>` | Tarjeta movil, estilos responsivos y generacion del QR dinamico. |
-| `ALEJANDRO <alejandrotoledo368@gmail.com>` | Panel administrativo, lector QR por camara, ejecutable, pruebas, README e integracion. |
+| `alejandrotoledo368-dotcom <alejandrotoledo368@gmail.com>` | Panel administrativo, lector QR por camara, ejecutable, pruebas, README e integracion. |
 
 El desglose de actividades, evidencias y guion de exposicion se encuentra en [`REPORTE_CONTRIBUCIONES.md`](REPORTE_CONTRIBUCIONES.md).
 
