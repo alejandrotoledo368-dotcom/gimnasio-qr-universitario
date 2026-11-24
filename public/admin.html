@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#081d25" />
+    <meta name="description" content="Panel de control de accesos al gimnasio universitario mediante lector QR." />
+    <title>Control de Acceso | UniSport</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body class="admin-body">
+    <a class="skip-link" href="#panelPrincipal">Saltar al panel</a>
+    <aside class="sidebar">
+      <a class="brand brand-light" href="/">
+        <span class="brand-mark" aria-hidden="true">U</span>
+        <span><strong>UniSport</strong><small>Administracion</small></span>
+      </a>
+      <nav aria-label="Navegacion principal">
+        <a class="nav-item active" href="#resumen"><span aria-hidden="true">▦</span> Resumen</a>
+        <a class="nav-item" href="#lector"><span aria-hidden="true">⌗</span> Lector QR</a>
+        <a class="nav-item" href="#alumnosDentro"><span aria-hidden="true">◉</span> En gimnasio</a>
+        <a class="nav-item" href="#historial"><span aria-hidden="true">≡</span> Historial</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="live-dot"></span>
+        <div><strong>Sistema operativo</strong><small id="storageMode">Verificando datos...</small></div>
+      </div>
+      <a class="sidebar-back" href="/">Ver pase de alumno</a>
+    </aside>
+
+    <main id="panelPrincipal" class="dashboard">
+      <header class="dashboard-header">
+        <div>
+          <p class="eyebrow">Centro deportivo universitario</p>
+          <h1>Control de acceso</h1>
+          <p id="currentDate" class="date-copy"></p>
+        </div>
+        <button id="refreshDashboard" class="secondary-button" type="button">Actualizar datos</button>
+      </header>
+
+      <section id="resumen" class="metrics-grid" aria-label="Resumen del dia">
+        <article class="metric-card accent-green">
+          <span class="metric-icon" aria-hidden="true">◉</span>
+          <div><small>Dentro ahora</small><strong id="metricDentro">0</strong><span>alumnos activos</span></div>
+        </article>
+        <article class="metric-card accent-blue">
+          <span class="metric-icon" aria-hidden="true">✓</span>
+          <div><small>Creditos validados</small><strong id="metricCreditos">0</strong><span>sesiones completas</span></div>
+        </article>
+        <article class="metric-card accent-gold">
+          <span class="metric-icon" aria-hidden="true">↗</span>
+          <div><small>Visitas de hoy</small><strong id="metricVisitas">0</strong><span>entradas registradas</span></div>
+        </article>
+        <article class="metric-card accent-slate">
+          <span class="metric-icon" aria-hidden="true">◎</span>
+          <div><small>Alumnos registrados</small><strong id="metricAlumnos">0</strong><span>cuentas disponibles</span></div>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article id="lector" class="panel scanner-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">Sensor optico CMOS</p><h2>Lector de codigo QR</h2></div>
+            <span id="cameraStatus" class="status-pill status-neutral"><span></span> Inactivo</span>
+          </div>
+          <div id="reader" class="reader-box">
+            <div id="scannerEmpty" class="scanner-empty">
+              <span class="scan-symbol" aria-hidden="true">⌗</span>
+              <strong>Camara lista para iniciar</strong>
+              <p>Permite el acceso a la camara para leer el pase del alumno en tiempo real.</p>
+            </div>
+          </div>
+          <div class="scanner-actions">
+            <button id="toggleScanner" class="primary-button" type="button">Activar camara</button>
+            <span class="security-note">El video se procesa localmente y no se almacena.</span>
+          </div>
+
+          <div class="divider"><span>o captura manual</span></div>
+          <form id="manualForm" class="manual-form">
+            <div>
+              <label for="manualMatricula">Matricula</label>
+              <input id="manualMatricula" name="matricula" type="text" inputmode="text" autocomplete="off" placeholder="Ej. A02341001" maxlength="20" required />
+            </div>
+            <button class="secondary-button" type="submit">Procesar acceso</button>
+          </form>
+        </article>
+
+        <article id="alumnosDentro" class="panel occupancy-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">Ocupacion actual</p><h2>Alumnos dentro</h2></div>
+            <span id="occupancyCount" class="count-badge">0</span>
+          </div>
+          <div class="table-wrap compact-table-wrap">
+            <table>
+              <thead><tr><th>Alumno</th><th>Entrada</th><th>Tiempo</th><th><span class="sr-only">Acciones</span></th></tr></thead>
+              <tbody id="insideTableBody"></tbody>
+            </table>
+            <div id="insideEmpty" class="empty-state"><span>○</span><strong>Gimnasio sin registros activos</strong><p>Las entradas apareceran aqui al escanear un pase.</p></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="historial" class="panel history-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">Trazabilidad</p><h2>Historial de movimientos</h2></div>
+          <span class="table-caption">Ultimos 50 eventos</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Fecha y hora</th><th>Alumno</th><th>Movimiento</th><th>Duracion</th><th>Resultado</th></tr></thead>
+            <tbody id="historyTableBody"></tbody>
+          </table>
+          <div id="historyEmpty" class="empty-state"><span>≡</span><strong>Aun no hay movimientos</strong><p>Registra la primera entrada desde el lector.</p></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toastRegion" class="toast-region" aria-live="assertive" aria-atomic="true"></div>
+    <div id="confirmDialog" class="modal-backdrop" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <span class="modal-icon">+65</span>
+        <h2 id="modalTitle">Simular sesion completa</h2>
+        <p>Se registrara la salida con 65 minutos de permanencia y se otorgara un credito deportivo.</p>
+        <div class="modal-actions"><button id="cancelSimulation" class="ghost-button" type="button">Cancelar</button><button id="confirmSimulation" class="primary-button" type="button">Confirmar simulacion</button></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script type="module" src="/js/admin.js"></script>
+  </body>
+</html>
+
