@@ -10,4 +10,8 @@ coverage/
 build/
 __pycache__/
 *.pyc
+entrega/assets/
+entrega/_qa_render/
+entrega/_tools/
+entrega/build_entrega.py
 
