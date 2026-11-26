@@ -198,6 +198,16 @@ git shortlog -sne --all
 - La interfaz evita insertar datos sin escapar en el DOM, incluye foco visible y respeta `prefers-reduced-motion`.
 - Para un entorno institucional real se debe agregar autenticacion de directivos y control de roles antes de manejar datos personales reales.
 
+## Limitaciones y posibles mejoras
+
+Esta version es una demostracion academica con cuatro alumnos ficticios. El ejecutable local conserva entradas, salidas y creditos solo mientras permanece abierto; al reiniciarlo vuelve al estado inicial. En Vercel se requiere configurar Redis para conservar los registros entre ejecuciones.
+
+El lector necesita permiso de camara y una pagina servida desde `localhost` o HTTPS. La generacion y lectura del QR dependen de bibliotecas cargadas desde un CDN, por lo que la demostracion con camara requiere conexion a Internet. Si la camara no esta disponible, el panel ofrece captura manual de la matricula.
+
+El QR identifica una matricula, pero su vigencia y autenticidad no se comprueban en el servidor. Ademas, el panel y el parametro `minutosSimulados` no tienen autenticacion: se incluyeron para facilitar las pruebas, no para usar el sistema con datos reales.
+
+Antes de un uso institucional se propone autenticar alumnos y directivos, firmar y validar los pases QR con vencimiento, restringir la simulacion a un entorno de pruebas, registrar auditoria de cambios y sustituir los alumnos ficticios por datos gestionados por la universidad con controles de privacidad.
+
 ## Licencia y alcance
 
 Proyecto academico para la materia **Programacion de Sistemas**. Los alumnos incluidos son datos ficticios de demostracion.
